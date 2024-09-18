@@ -62,8 +62,6 @@ with open(r'C:\Users\ewanj\Documents\CODING\ytMusicPlaylistDownload\linksCollect
 
     
 links = data
-if __name__ == "__main__":
-    downloadPath = r'C:\Users\ewanj\Music\MUSIC'
 
 for link in links:
 
