@@ -13,7 +13,25 @@ function validateYouTubeUrl(url) {
 }
 
 function convertToMp3(url) {
-    // This is a placeholder function. You would need to integrate with a backend service or API
-    // that handles the actual conversion.
+    fetch('https://api.example.com/convert', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'API-Key': 'your-api-key'
+        },
+        body: JSON.stringify({ url: url })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById('result').innerHTML = `<a href="${data.downloadUrl}">Download MP3</a>`;
+        } else {
+            document.getElementById('result').innerHTML = 'Conversion failed. Please try again.';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('result').innerHTML = 'An error occurred. Please try again.';
+    });
     document.getElementById('result').innerHTML = 'Conversion started for: ' + url;
 }
