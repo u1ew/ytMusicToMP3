@@ -3,7 +3,7 @@ import yt_dlp as youtube_dl
 def download_playlist(url):
     ydl_opts = {
         'format': 'bestaudio/best',
-        'outtmpl': '..\Music',
+        'outtmpl': 'C:\Users\ewanj\Documents\Dev\ytMusicToMP3\ytPlaylistToMP3\Songs',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
             'preferredcodec': 'mp3',
@@ -14,4 +14,4 @@ def download_playlist(url):
         ydl.download([url])
 
 # Example usage
-download_playlist('https://music.youtube.com/playlist?list=PLCK20UqkVhH5eoEcb5XvA1sSezmTPc2-Y&si=vZbT7wPI70OqNBa_')
+download_playlist('https://music.youtube.com/playlist?list=PLCK20UqkVhH5eoEcb5XvA1sSezmTPc2-Y&si=fD-4oxcPJUrW7hYE')
