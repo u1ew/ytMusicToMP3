@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
 import json
+from ytMusicDownloader import *
 
 
 # Path to your Chrome profile
@@ -56,13 +57,6 @@ driver.quit()
 
 time.sleep(1)
 
-
-with open(r'C:\Users\ewanj\Documents\CODING\ytMusicPlaylistDownload\linksCollected.json', 'r') as json_file:
-    data = json.load(json_file)
-
-    
-links = data
-
-for link in links:
+songDownload()
 
 print("Downloading Complete")
