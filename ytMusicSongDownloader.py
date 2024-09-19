@@ -11,10 +11,10 @@ correctPath = cwd.replace("\\","/")
 
 
 # Path to your Chrome profile
-profile_path = r'C:\Users\ewanj\AppData\Local\Google\Chrome\User Data'
+profile_path = 'C:/Users/ewanj/AppData/Local/Google/Chrome/User Data'
 
 # Path to your Chromedriver
-chromedriver_path = (correctPath +"/chromedriver/chromedriver.exe")
+chromedriver_path = (correctPath +'/chromedriver/chromedriver.exe')
 
 # Set up Chrome options
 options = Options()
@@ -31,7 +31,7 @@ driver.get("https://music.youtube.com/playlist?list=PLCK20UqkVhH5eoEcb5XvA1sSezm
 
 # Keep the browser open for a while
 print("2 second wait")
-time.sleep(2)  # Adjust the sleep time as needed
+time.sleep(1)  # Adjust the sleep time as needed
 
 def goBottom(driver):
     return driver.execute_script("return (window.innerHeight + window.scrollY) >= document.body.scrollHeight")
@@ -40,20 +40,18 @@ def goBottom(driver):
 while True:
     # Scroll down
     driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-    time.sleep(2)  # Wait for the page to load
+    time.sleep(1)  # Wait for the page to load
 
     # Check if at the bottom
     if goBottom(driver):
         break
 
-time.sleep(1)
-
-with open(correctPath+"/linkCollectionScript.js", 'r') as file:
+with open(correctPath+'/linkCollectionScript.js', 'r') as file:
     jsFile = file.read()
 
 result = driver.execute_script(jsFile)
 
-with open(correctPath+"/linksCollected.json", 'w') as json_file:
+with open(correctPath+'/linksCollected.json', 'w') as json_file:
     json.dump(result, json_file, indent=4)
 
 # Close the browser
@@ -61,6 +59,12 @@ driver.quit()
 
 time.sleep(1)
 
-songDownload(correctPath)
+with open(correctPath+'/linksCollected.json', 'r') as json_file:
+        links = json.load(json_file)
+
+downloadPath = r'C:\Users\ewanj\Music\MUSIC'
+
+for link in links:
+     download_music(downloadPath, link)
 
 print("Downloading Complete")
