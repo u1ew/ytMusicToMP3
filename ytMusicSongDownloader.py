@@ -7,14 +7,14 @@ import os
 from ytMusicDownloader import *
 
 cwd = os.getcwd()
-correctPath = cwd.replace('\\','/')
+correctPath = cwd.replace("\\","/")
 
 
 # Path to your Chrome profile
 profile_path = r'C:\Users\ewanj\AppData\Local\Google\Chrome\User Data'
 
 # Path to your Chromedriver
-chromedriver_path = r'C:\Users\ewanj\Documents\CODING\ytMusicPlaylistDownload\chromedriver\chromedriver.exe'
+chromedriver_path = (correctPath +"/chromedriver/chromedriver.exe")
 
 # Set up Chrome options
 options = Options()
@@ -48,12 +48,12 @@ while True:
 
 time.sleep(1)
 
-with open(r'C:\Users\ewanj\Documents\CODING\ytMusicPlaylistDownload\linkCollectionScript.js', 'r') as file:
+with open(correctPath+"/linkCollectionScript.js", 'r') as file:
     jsFile = file.read()
 
 result = driver.execute_script(jsFile)
 
-with open(r'C:\Users\ewanj\Documents\CODING\ytMusicPlaylistDownload\linksCollected.json', 'w') as json_file:
+with open(correctPath+"/linksCollected.json", 'w') as json_file:
     json.dump(result, json_file, indent=4)
 
 # Close the browser
@@ -61,6 +61,6 @@ driver.quit()
 
 time.sleep(1)
 
-songDownload()
+songDownload(correctPath)
 
 print("Downloading Complete")
