@@ -20,4 +20,5 @@ def songDownload(fileDirectory):
             break
         break
 
-songDownload()
+fileDirectory = 'C:/Users/ewanj/OneDrive/Documents/Dev/ytMusicToMP3'
+songDownload(fileDirectory)
