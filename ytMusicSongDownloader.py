@@ -3,7 +3,11 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 import time
 import json
+import os
 from ytMusicDownloader import *
+
+cwd = os.getcwd()
+correctPath = cwd.replace('\\','/')
 
 
 # Path to your Chrome profile
